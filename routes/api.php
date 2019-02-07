@@ -41,3 +41,6 @@ Route::get('/songs', function() {
     return new SongsCollection(Song::all());
 });
 
+
+Route::apiResource('books', 'BookController');
+Route::post('books/{book}/ratings', 'RatingController@store');
