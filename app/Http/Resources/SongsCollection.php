@@ -16,7 +16,7 @@ class SongsCollection extends ResourceCollection
     {
         // return parent::toArray($request);
         return [
-            'data' => $this->collection,
+            'data' => SongResource::collection($this->collection), // $this->collection,
             'meta' => ['song_count' => $this->collection->count()],
         ];
     }

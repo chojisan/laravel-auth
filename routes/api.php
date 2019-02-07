@@ -17,16 +17,27 @@ use App\Song;
 |
 */
 
+// \DB::listen(function($query) {
+//     var_dump($query->sql);
+// });
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 
 Route::get('/songs/{song}', function(Song $song) {
-    return new SongResource($song);
+    // return new SongResource($song);
+    // return (new SongResource(Song::find(1)))->additional([
+    //     'meta' => [
+    //         'anything' => 'Some Value'
+    //     ]
+    // ]);
+    return new SongsCollection(Song::with('album')->get());
 });
 
 Route::get('/songs', function() {
     // return SongResource::collection(Song::all());
     return new SongsCollection(Song::all());
 });
+
