@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 
 use App\Http\Resources\SongResource;
+use App\Http\Resources\SongsCollection;
 use App\Song;
 
 /*
@@ -26,5 +27,6 @@ Route::get('/songs/{song}', function(Song $song) {
 });
 
 Route::get('/songs', function() {
-    return new SongResource(Song::all());
+    // return SongResource::collection(Song::all());
+    return new SongsCollection(Song::all());
 });
