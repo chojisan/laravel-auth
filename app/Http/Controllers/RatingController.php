@@ -13,7 +13,7 @@ class RatingController extends Controller
     {
         $rating = Rating::firstOrCreate(
             [
-                'user_id' => $request->user()->id,
+                'user_id' => $request->user_id, //$request->user()->id,
                 'book_id' => $book->id,
             ],
             ['rating' => $request->rating]
